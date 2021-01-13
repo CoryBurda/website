@@ -1,43 +1,63 @@
-body {
-    color:#555;
-    font-family:Arial,Helvetica,sans-serif;
-    font-size:16px;
+body{
+    color: #555;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
     line-height: 1,6em;
-    margin:0;
+    margin: 0;
 }
 
 .container {
     width: 80%;
-    margin:auto;
-    overflow:hidden;
+    margin: auto;
+    overflow: hidden;
 }
-#main-header{
-    background-color: coral;
-    color:#fff;
+
+#header{
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-bottom: 1rem;
 }
 
 #navbar{
-    background-color: rgb(135, 235, 77);
+    text-align: center;
+    position: fixed;
+    width: 16rem;
+    top: 53px;
+    right: 0;
+    background-color: #00ADB5;
     color: #fff;
+    height: 20%;
+    border-radius: 0.5rem 0 0 0.5rem;
+    box-shadow: 5px 5px 5px black;
 }
 
-#navbar ul{
-    padding: 0;
-    list-style: none;
+#navbar-button{
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
 }
 
-#navbar li{
-    display:inline;
+#navbar div{
+    margin-bottom: 0.5rem;
 }
 
 #navbar a{
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
-    padding-right: 15px;
+    font-size: 1.5rem;
 }
 
-#showcase{
+.content{
+    width: 100%;
+    position: absolute;
+    z-index: -1; 
+}
+
+@media(max-width:1920px){
+    
+}
+
+/* #showcase{
     min-height: 300px;
     margin-bottom: 30px;
     text-align: center;
@@ -48,38 +68,67 @@ body {
     font-size: 50px;
     line-height: 1.6em;
     padding-top: 30px;
-}
+} */
 
 #main{
-    float:left;
-    width: 70%;
+    float: left;
+    width: 50%;
     padding: 0 30px;
     box-sizing: border-box;
 }
 
 #sidebar{
-    float:right;
-    width: 30%;
-    background-color: #333;
+    float: right;
+    width: 50%;
+    background-color: #EEEEEE;
     padding: 10px;
     box-sizing: border-box;
 }
 
 #main-footer{
-    background-color: #333333;
+    background-color: #9e9795;
     color: #fff;
     text-align: center;
     padding: 20px;
-    margin-top:40px;
+    width: 100%;
+    height: 2.5rem;
+    padding-bottom: 2.5rem;
 }
 
 @media(max-width:600px){
     #main{
         width: 100%;
-        float:none;
+        float: none;
     }
     #sidebar{
         width: 100%;
-        float:none;
+        float: none;
     }
+}
+
+.hidden{
+    display: none;
+}
+
+.revealed{
+    display: block;
+}
+
+.button{
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.bold{
+    font-weight: bolder;
+}
+
+.dropdown-content{
+    margin-bottom: 0.5rem;
+}
+
+#courses-taken{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
 }

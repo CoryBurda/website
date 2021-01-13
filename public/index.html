@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <link rel="icon" href="./img/Face.PNG">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cory Burda</title>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+        crossorigin="anonymous">
+    </script>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/8.2.1/firebase-app.js"></script>
@@ -18,9 +23,11 @@
     <script defer src="/__/firebase/8.2.1/firebase-analytics.js"></script>
     <script defer src="/__/firebase/8.2.1/firebase-remote-config.js"></script>
     <script defer src="/__/firebase/8.2.1/firebase-performance.js"></script>
-    <!-- <script src="./js/bootstrap.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="./css/bootstrap.min.css"> -->
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./index.css"> 
+
     <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
@@ -29,39 +36,125 @@
 
   </head>
   <body>
-    <header id="main-header">
-        <div class="container">
-             <h1>My Website</h1>
-        </div>
-    </header>
-
-    <nav id="navbar">
-        <div class="container">
-            <ul>
-                <li><a href = '#'>Home</a></li>
-                <li><a href = '#'>About</a></li>
-                <li><a href = '#'>Services</a></li>
-                <li><a href = '#'>Contact</a></li>
-            </ul>
+    <button class="btn btn-outline-info bold" id="navbar-button" onclick="toggleNavbar();"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+      </svg>Menu</button>
+    <nav id="navbar" class="hidden">
+        <div class="container navbar-text">
+            <div id="header">Cory Burda</div>
+            <div><a href = '#about'>About</a></div>
+            <div><a href = '#porfolio'>Porfolio</a></div>
+            <div><a href = '#contact'>Contact</a></div>
+            <!-- <div><button class="btn btn-danger bold" onclick="toggleNavbar();">Close Menu</button></div> -->
         </div>
     </nav>
 
-    
-    <div id="showcase" class = "container"> 
-        <h1>Welcome to my Website.~ Cory Burda</h1>
-    </div>
-
-    <div class="container">
-        <div id="main">
-            <h1>Welcome</h1>
-            <p> Welcome to my Website.~ Cory Burda</p>
+    <div class="content">
+        <div id="showcase" class = "container" style="background-image: url('./img/Im_Cory.png');"> 
+            <h1>Hello, I'm <br><b>Cory Burda</b></h1>
         </div>
-        <aside id="sidebar">
-            <p>Welcome to my Website.~ Cory Burda</p>
-        </aside>
-    </div>   
-    <footer id="main-footer">
-        <p> Copyright &copy; 2021 Cory Burda</p>
-    </footer> 
+    
+        <div class="container">
+            <div id="main">
+                <h1>Welcome</h1>
+                <p> Welcome to my Website.~ Cory Burda</p>
+            </div>
+            <div id="sidebar">
+                <p>Welcome to my Website.~ Cory Burda</p>
+            </div>
+        </div>
+    
+        <div id="about" class = "container"> 
+            <h1>About Me</h1>
+        </div>
+    
+        <div id="porfolio" class="container">
+            <div id="main">
+                <h1><u>Education</u></h1>
+                <div><div class="bold">Stony Brook University</div> Expected Graduation May 2022</div>
+                <div>M.S./B.E. Electrical Engineering </div>
+                <div>GPA: 3.88/4</div>
+                <div id="courses-taken">Courses Taken</div>
+    
+                <button id="math-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('math-courses');">Math Courses</button>
+                <div class="hidden dropdown-content" id="math-courses">
+                    <li>MAT 303 - Calculus IV with Applications</li>
+                    <li>AMS 261 - Applied Calculus III</li>
+                </div>
+                
+                <button id="misc-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('misc-courses');">MISC Courses</button>
+                <div class="hidden dropdown-content" id="misc-courses">
+                    <li>ESE 313/513 - Introduction to Photovoltaics</li>
+                    <li>ESE 323 - Modern Circuit Board Design and Prototyping</li>
+                    <li>ESE 319 - Electromagnetics and Transmission Line Theory</li>
+                    <li>ESE 231 - Introduction to Semiconductor Devices</li>
+                </div>
+                
+                <button id="circuit-analysis-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('circuit-analysis-courses');">Circuit Analysis Courses</button>
+                <div class="hidden dropdown-content" id="circuit-analysis-courses">
+                    <li>ESE 311 - Analog Integrated Circuits</li>
+                    <li>ESE 372 - Electronics</li>
+                    <li>ESE 271 - Electrical Circuit Analysis I</li>
+                </div>
+                
+                <button id="processing-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('processing-courses');">Signal Processing Courses</button>
+                <div class="hidden dropdown-content" id="processing-courses">
+                    <li>ESE 503 - Stochastic Systems</li>
+                    <li>ESE 306 - Random Signals and Systems</li>
+                    <li>ESE 337 - Digitcal Signal Processing</li>
+                    <li>ESE 305 - Deterministic Signals and Systems</li>
+                </div>
+    
+                <button id="embedded-systems-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('embedded-systems-courses');">Embedded Systems Courses</button>
+                <div class="hidden dropdown-content" id="embedded-systems-courses">
+                    <li>ESE 380 - Embedded Microcontroller Systems Design I</li>
+                    <li>ESE 381 - Embedded Microprocessor Systems Design II</li>
+                </div>
+                
+                <button id="programming-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('programming-courses');">Programming Courses</button>
+                <div class="hidden dropdown-content" id="programming-courses">
+                    <li>ESE 224 - Computer Techniques for Electronic Design II</li>
+                    <li>ESE 124 - Computer Techniques for Electronic Design I</li>
+                </div>
+    
+                <button id="laboratory-courses-button" type="button" class="btn btn-outline-info button bold" onclick="toggleCourse('laboratory-courses');">Laboratory Courses</button>
+                <div class="hidden dropdown-content" id="laboratory-courses">
+                    <li>ESE 324 - Electronics Laboratory C</li>
+                    <li>ESE 314 - Electronics Laboratory B</li>
+                    <li>ESE 211 - Electronics Laboratory A</li>
+                </div>
+            </div>
+            
+            <div id="sidebar">
+                <h1><u>Projects</u></h1>
+                <div><b>Arduino Car Distance Sensor</b></div>
+                <li>Parts: Ultrasonic sensor, Arduino Uno, RGBLED, LED display, resistors.</li>
+                <li>Purpose: The device reads the distance to the car in a garage and can show the distance in meters on the OLED display or the RGBLED will smoothly transistion between hues proportional to the distance.</li>
+                <li>What I learned: Arduino IDE, Aurdino Uno, and syntax for Arduino components. Standard C++ libraries (i.e. QueueArray, set, algorithm).</li>
+            
+                <p><b>Snake Using a Joystick</b></p>
+                <li>Parts: Arduino Uno, LED display, RGBLED, joystick, resistors.</li>
+                <li>Purpose: Snake is an easy and fun game to play. Coding it was a fun challenge; especially since the snake can move diagonally and accelerate.</li>
+                <li>What I learned: Using classes, templates, and multifile organization. Bresenham's algorithm to move the snake in any direction smoothly.</li>
+    
+                <p><b>2048 Using a Joystick</b></p>
+                <li>Parts: Arduino Uno, LED display, RGBLED, joystick, resistors.</li>
+                <li>Purpose: Made one game. Check. Lets make another!</li>
+                <li>What I learned: Standard C++ libraries (i.e. Maps and lists) and iterators.</li>
+            </div>
+        </div> 
+    
+        <div id="contact" class="container">
+            <h1>Contact Me</h1>
+            <div>School Email: cory.burda@stonybrook.edu</div>
+            <div>Personal Email: coryburda@gmail.com</div>
+            <div>Linkedin: https://www.linkedin.com/in/cory-burda/</div>
+            <div>Phone Number: 718-902-1746</div>
+        </div>
+    
+        <footer id="main-footer">
+            <p> Copyright &copy; 2021 Cory Burda</p>
+        </footer>
+    </div> 
   </body>
 </html>
